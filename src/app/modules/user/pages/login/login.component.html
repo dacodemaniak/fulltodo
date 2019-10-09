@@ -1,11 +1,11 @@
-<form class="form" [formGroup]="loginForm">
+<form class="form" [formGroup]="loginForm" (submit)="signin()">
   <fieldset>
     <legend>Identifiez-vous</legend>
 
   <lottie-animation-view
     [options]="lottieConfig"
-    [width]="300"
-    [height]="600"
+    [width]="150"
+    [height]="300"
   >
   </lottie-animation-view>
 
@@ -17,5 +17,7 @@
       <input matInput type="password" placeholder="Password" formControlName="secretKey">
     </mat-form-field>
   </fieldset>
+
   <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Sign In</button>
+
 </form>

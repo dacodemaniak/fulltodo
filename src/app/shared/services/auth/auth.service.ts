@@ -18,7 +18,7 @@ export class AuthService {
    */
   public byLogin(login: string): Observable<any> {
     return this.http.get(
-      environment.apiRoot + 'login/' + login,
+      environment.apiRoot + 'users/login/' + login,
       {
         observe: 'response'
       }
