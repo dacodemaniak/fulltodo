@@ -7,6 +7,10 @@ import { UserModule } from './modules/user/user.module';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
 import { LoggedInService } from './shared/services/guards/logged-in.service';
+import { MaterialModule } from './shared/modules/ui/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { LottieAnimationViewModule } from 'ng-lottie';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,17 @@ import { LoggedInService } from './shared/services/guards/logged-in.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule
+    UserModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    LottieAnimationViewModule.forRoot()
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    MaterialModule,
+    HttpClientModule,
+    LottieAnimationViewModule
   ],
   providers: [
     LoggedInService

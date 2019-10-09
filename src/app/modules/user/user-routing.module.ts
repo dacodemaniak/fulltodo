@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LottieAnimationViewModule } from 'ng-lottie';
+import { MaterialModule } from './../../shared/modules/ui/material/material.module';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -21,7 +23,9 @@ const routes: Routes = [
     LoginComponent
   ],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MaterialModule,
+    LottieAnimationViewModule
   ]
 })
 export class UserRoutingModule { }

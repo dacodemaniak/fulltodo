@@ -1,1 +1,24 @@
-<p>login works!</p>
+<form class="form">
+  <fieldset>
+    <legend>Identifiez-vous</legend>
+
+  <lottie-animation-view
+    [options]="lottieConfig"
+    [width]="300"
+    [height]="600"
+  >
+  </lottie-animation-view>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="User name">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="password">
+    </mat-form-field>
+  </fieldset>
+
+
+
+  <button mat-raised-button>Sign In</button>
+</form>
