@@ -4,6 +4,7 @@ import { LottieAnimationViewModule } from 'ng-lottie';
 import { MaterialModule } from './../../shared/modules/ui/material/material.module';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     MaterialModule,
-    LottieAnimationViewModule
+    LottieAnimationViewModule,
+    ReactiveFormsModule
   ]
 })
 export class UserRoutingModule { }

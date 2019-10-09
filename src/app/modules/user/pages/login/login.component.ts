@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * Configuration des animations
+   */
   public lottieConfig: any;
 
-  constructor() { }
+  /**
+   * Instance du formulaire de connexion
+   */
+  public loginForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.lottieConfig = {
@@ -18,6 +27,17 @@ export class LoginComponent implements OnInit {
       autoplay: true,
       loop: true
     };
+
+    this.loginForm = this.formBuilder.group({
+      userName: [
+        '',
+        Validators.required
+      ],
+      secretKey: [
+        '',
+        Validators.required
+      ]
+    });
   }
 
 }

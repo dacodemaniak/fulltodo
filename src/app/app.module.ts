@@ -11,6 +11,7 @@ import { MaterialModule } from './shared/modules/ui/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LottieAnimationViewModule } from 'ng-lottie';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import { LottieAnimationViewModule } from 'ng-lottie';
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     LottieAnimationViewModule.forRoot()
   ],
   exports: [
     RouterModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     LottieAnimationViewModule
   ],
   providers: [
