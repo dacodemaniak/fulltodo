@@ -18,6 +18,18 @@
     </mat-form-field>
   </fieldset>
 
-  <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Sign In</button>
+  <div class="flexbox-parent">
+    <div layout="row" layout-align="center center"  style="height: 10vh">
+      <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Sign In</button>
+    </div>
+  </div>
+
+  <fieldset class="flexbox-parent">
+    <div layout="row" layout-align="center center"  style="height: 10vh">
+      <a [routerLink]="['../','signup']">
+        Ou créez un compte
+      </a>
+    </div>
+  </fieldset>
 
 </form>

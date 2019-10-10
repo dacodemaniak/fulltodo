@@ -57,29 +57,30 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public signin(): void {
     if (this.loginForm.valid) {
-      this.authService.byLogin(this.loginForm.controls.userName.value)
+      this.authService.authenticate(this.loginForm.value)
       .pipe(first())
       .subscribe(
-          (response: any) => {
+          (response: HttpResponse<any>) => {
               if (response.status === 200) {
                 this.router.navigate(['home']);
               } else {
                 // Other http status
                 this.snackBar.open(
-                'Something went wrong',
+                response.body.message,
                 '',
                 {
                   duration: 2000
                 }
               );
-                this.loginForm.controls.userName.reset();
+              this.loginForm.controls.userName.reset();
               this.loginForm.controls.secretKey.reset();
             }
 
           },
-          error => {
+          (error: any) => {
+            console.log('Error : ' + JSON.stringify(error));
             this.snackBar.open(
-              'Sorry, authentication failed',
+              error.error.message,
               '',
               {
                 duration: 2000

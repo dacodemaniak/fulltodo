@@ -16,9 +16,9 @@ export class AuthService {
    * @param login User login (estimating that it is unique)
    * @return Observable<any>
    */
-  public byLogin(login: string): Observable<any> {
+  public authenticate(credentials: any): Observable<any> {
     return this.http.get(
-      environment.apiRoot + 'users/login/' + login,
+      environment.apiRoot + 'user/authenticate/' + credentials.userName + '/' + credentials.secretKey,
       {
         observe: 'response'
       }
