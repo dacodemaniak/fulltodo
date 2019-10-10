@@ -9,9 +9,10 @@ import { RouterModule } from '@angular/router';
 import { LoggedInService } from './shared/services/guards/logged-in.service';
 import { MaterialModule } from './shared/modules/ui/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BasicAuthInterceptorService } from './shared/services/http/basic-auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LottieAnimationViewModule
   ],
   providers: [
-    LoggedInService
+    LoggedInService,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

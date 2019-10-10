@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'http://10.160.14.12:8080/'
+  apiRoot: 'http://10.160.14.12:8080/',
+  basicAuth: 'abcd:xdcfvgh'
 };
 
 /*

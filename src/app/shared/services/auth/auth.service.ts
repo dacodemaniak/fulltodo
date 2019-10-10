@@ -24,4 +24,14 @@ export class AuthService {
       }
     );
   }
+
+  public add(formData: any): Observable<any> {
+    return this.http.post(
+      environment.apiRoot + 'user',
+      formData,
+      {
+        observe: 'response'
+      }
+    );
+  }
 }
