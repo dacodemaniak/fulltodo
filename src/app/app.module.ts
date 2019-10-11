@@ -16,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { BasicAuthInterceptorService } from './shared/services/http/basic-auth-interceptor.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { BasicAuthInterceptorService } from './shared/services/http/basic-auth-i
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    LottieAnimationViewModule.forRoot()
+    LottieAnimationViewModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports: [
     RouterModule,
