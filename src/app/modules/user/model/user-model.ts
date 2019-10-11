@@ -27,11 +27,11 @@ export class UserModel {
   }
 
   public get _lastName(): string {
-    return this.lastName;
+    return this.lastname;
   }
 
   public get _firstName(): string {
-    return this.firstName;
+    return this.firstname;
   }
 
   public getRequired() {

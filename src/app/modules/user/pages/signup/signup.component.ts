@@ -36,11 +36,12 @@ export class SignupComponent implements OnInit {
     this.authService.add(user)
       .pipe(first())
       .subscribe((response: HttpResponse<any>) => {
-        const greetings: string = response.body.properties.firstname + ' ' + response.body.properties.lastname;
+        const properties: any = JSON.parse(response.body.properties);
+        const greetings: string = properties.firstname + ' ' + properties.lastname;
 
         // Other http status
         this.snackBar.open(
-          greetings,
+          'Bonjour, ' + greetings + ' bienvenue...',
           '',
           {
             duration: 2000
