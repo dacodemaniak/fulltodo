@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { first } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
+import { UserStateService } from './../../../../shared/services/auth/user-state.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private userState: UserStateService
   ) { }
 
   ngOnInit() {
@@ -39,9 +41,14 @@ export class LoginComponent implements OnInit, OnDestroy {
       loop: true
     };
 
+    // Check for a user
+    let userName: string;
+    if (this.userState.hasUser()) {
+      userName = this.userState.userName;
+    }
     this.loginForm = this.formBuilder.group({
       userName: [
-        '',
+        userName,
         Validators.required
       ],
       secretKey: [
@@ -61,21 +68,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe(
           (response: HttpResponse<any>) => {
-              if (response.status === 200) {
-                this.router.navigate(['home']);
-              } else {
-                // Other http status
-                this.snackBar.open(
-                response.body.message,
-                '',
-                {
-                  duration: 2000
-                }
-              );
-              this.loginForm.controls.userName.reset();
-              this.loginForm.controls.secretKey.reset();
-            }
-
+            this.userState.update().then(() => {
+              console.log('Then go home');
+              this.router.navigate(['../', 'home']);
+            });
           },
           (error: any) => {
             console.log('Error : ' + JSON.stringify(error));
