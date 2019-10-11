@@ -56,7 +56,8 @@ export class SignupComponent implements OnInit {
         const userState: UserState = {
           lastname: properties.lastname,
           firstname: properties.firstname,
-          nickName: response.body.nickName
+          nickName: response.body.nickName,
+          isLoggedIn: false
         };
         this.userState.store(userState);
         this.router.navigate(['../', 'authentication']);
