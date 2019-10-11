@@ -1,1 +1,30 @@
-<p>signup works!</p>
+<form [formGroup]="signupForm" class="form" (submit)="signup()">
+  <fieldset>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="User name" formControlName="nickName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="Password" formControlName="secretKey">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="E-mail" formControlName="email">
+    </mat-form-field>
+  </fieldset>
+
+  <fieldset>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="First name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Last name" formControlName="lastName">
+    </mat-form-field>
+  </fieldset>
+
+  <div class="flexbox-parent">
+    <div layout="row" layout-align="center center"  style="height: 10vh">
+      <button mat-raised-button color="primary" [disabled]="signupForm.invalid">Sign Up</button>
+    </div>
+  </div>
+</form>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserModel } from 'src/app/modules/user/model/user-model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,10 @@ export class AuthService {
     );
   }
 
-  public add(formData: any): Observable<any> {
+  public add(user: UserModel): Observable<any> {
     return this.http.post(
-      environment.apiRoot + 'user',
-      formData,
+      environment.apiRoot + 'user/signin',
+      user,
       {
         observe: 'response'
       }
