@@ -9,7 +9,9 @@ import { UserModel } from 'src/app/modules/user/model/user-model';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   /**
    * Call the api to get the user by its login

@@ -7,6 +7,9 @@ import { HttpResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 
 import { first } from 'rxjs/operators';
+import { UserStateService } from 'src/app/shared/services/auth/user-state.service';
+import { UserState } from '../../model/user-state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +23,9 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private userState: UserStateService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -48,6 +53,13 @@ export class SignupComponent implements OnInit {
           }
         );
         // Navigate to home after local storage
+        const userState: UserState = {
+          lastname: properties.lastname,
+          firstname: properties.firstname,
+          nickName: response.body.nickName
+        };
+        this.userState.store(userState);
+        this.router.navigate(['../', 'authentication']);
 
       }, (error) => {
         this.snackBar.open(

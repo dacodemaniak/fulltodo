@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { StorageServiceModule } from 'ngx-webstorage-service';
+
 import { BasicAuthInterceptorService } from './shared/services/http/basic-auth-interceptor.service';
 
 @NgModule({
